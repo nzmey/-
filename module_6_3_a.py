@@ -97,7 +97,7 @@ class Bird(Animal):
 
     def lay_eggs(self):
         from random import randint
-        n = randint(1, 5)
+        n = randint(1, 4)
         if n == 1:
             print(f'Здесь {n} яйцо для тебя!...')
         else:
