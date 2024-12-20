@@ -12,7 +12,7 @@ for root, dirs, files in os.walk("."):
         file_path = os.getcwd()
         file_size = os.stat(i).st_size
         file_time_create = time.ctime(os.path.getctime(i))
-        file_time_change = time.ctime(os.path.getctime(i))
+        file_time_change = time.ctime(os.path.getmtime(i))
 
         print(f'Файл: {file_name}')
         print(f'Родительские директории:  {parent_dir}')
