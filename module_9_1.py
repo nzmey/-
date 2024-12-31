@@ -12,7 +12,10 @@ def  apply_all_func(int_list, *functions):
 
     return result
 
-func_list = [min, max, len, sum, sorted]
+def frt(arg):
+    return arg
+
+func_list = [min, max, len, sum, sorted, frt]
 
 n_list = [21, 12, 6.345, 56, 7.28, 8, 74, 32, 9.45, 89]
 
