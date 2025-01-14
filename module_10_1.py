@@ -41,25 +41,35 @@ def wite_words(word_count, file_name):
 
 
 thread_1 = threading.Thread(target = wite_words, args = (10, "example_5.txt"))
-thread_1.start()
-thread_1.join()
+# thread_1.start()
+# thread_1.join()
 
 thread_2 = threading.Thread(target = wite_words, args = (30, "example_6.txt"))
-thread_2.start()
+# thread_2.start()
 # thread_2.join()
 
 thread_3 = threading.Thread(target = wite_words, args = (200, "example_7.txt"))
-thread_3.start()
+# thread_3.start()
 # thread_3.join()
 
 thread_4 = threading.Thread(target = wite_words, args = (100, "example_8.txt"))
-thread_4.start()
+# thread_4.start()
 # thread_4.join()
+
+thread_1.start()
+thread_2.start()
+thread_3.start()
+thread_4.start()
+thread_1.join()
+
 
 wite_words(10, "example_1.txt")
 wite_words(30, "example_2.txt")
 wite_words(200, "example_3.txt")
 wite_words(100, "example_4.txt")
+
+
+
 
 
 
