@@ -17,7 +17,7 @@ class Table:
 
 class  Guest(threading.Thread):
 
-    def __init__(self, name, eat_num = 0 ):
+    def __init__(self, name, eat_num = 0):
         threading.Thread.__init__(self)
         self._name = name
         self._eat_num = eat_num
@@ -25,10 +25,6 @@ class  Guest(threading.Thread):
     def run(self):
         t = random.randint(3, 10)
         time.sleep(t)
-
-    def __del__(self):
-        # print(f'Гость {self._name} - уничтожен...')
-        pass
 
 
 class Cafe:
@@ -59,8 +55,8 @@ class Cafe:
                     self._tables[i_tb]._guest.start()
                 else:
                     new_guest = Guest(name = guests[i_gst]._name)
+                    print('ОШИБКА!!!')
 
-                    self._tables[i_tb]._guest.__del__()
                     self._tables[i_tb]._guest = None
                     self._tables[i_tb]._guest = new_guest
                     self._tables[i_tb]._guest.start()
@@ -75,7 +71,6 @@ class Cafe:
             else:
                 continue
             time.sleep(0.5)
-
 
         return i_gst_list
 
@@ -123,9 +118,6 @@ class Cafe:
 
                             self.queue_cafe.put(new_guest)
 
-                            if self._tables[j]._guest != None:
-                                self._tables[j]._guest.__del__()
-
                             t_counter += 1
                             # print(f't_counter = {t_counter}')
 
@@ -149,24 +141,18 @@ class Cafe:
                                 print(f'\nГость {gst._name} занял(а) стол № '
                                       f'{self._tables[j]._number}.')
                         else:
+                            # self._tables[j]._guest.__del__()
                             self._tables[j]._guest = None
                             continue
 
                 elif self._tables[j]._guest is None:
                     cnt_none += 1
                     # print(f'cnt_none = {cnt_none}')
-                    if cnt_none < 20:
+                    if cnt_none < 21:
                         continue
                     else:
                         # print('cnt_none None')
                         break
-
-                else:
-                    continue
-
-                if cnt_none > 20:
-                    # print('cnt_none for')
-                    break
 
             if cnt_none > 20:
                 # print('cnt_none while')
@@ -196,13 +182,10 @@ cafe.sending_queue( *guests, g_out = s_q)
 # cafe.discuss_guests()
 cafe.serving_guests(lim_patience = 30)
 
-
 '''
 PS. В тексте домашнего задания - в названии последней функции - допущена ошибка.
 Вместо "discuss_guests" - ДИСКУССИЯ ГОСТЕЙ - следует написать "serving_guests" -
 - ОБСЛУЖИВАНИЕ ГОСТЕЙ.
 '''
-
-
 
 
