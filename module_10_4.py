@@ -94,6 +94,7 @@ class Cafe:
 
         while True:
             for j in range(len(self._tables)):
+                time.sleep(0.5)
 
                 if self._tables[j]._guest is not None:
                     cnt_none = 0
